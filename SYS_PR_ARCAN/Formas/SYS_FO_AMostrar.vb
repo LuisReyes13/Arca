@@ -5,6 +5,7 @@
 
         Try
             grdAnimales.Rows.Clear()
+            grdAnimales.Columns.Clear()
 
             grdAnimales.Columns.Add("Nombre", "Nombre")
             grdAnimales.Columns.Add("Sexo", "Sexo")
@@ -22,7 +23,7 @@
             Next
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox($"Error.SYS_FO_AMostrar_Load: {ex.Message}")
         End Try
 
     End Sub

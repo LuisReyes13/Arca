@@ -9,7 +9,7 @@ Public Class Form1
             SYS_FO_AMostrar.ShowDialog()
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox($"Error.btnMostrar_Click: {ex.Message}")
         End Try
 
     End Sub
@@ -38,18 +38,17 @@ Public Class Form1
                     cmbSexo.SelectedIndex = -1
 
                 End If
-            ElseIf Not ValidarAnimalJson(sNombre) Then
-
-                MsgBox("No existe Animal")
             End If
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox($"Error.btnIngresar_Click: {ex.Message}")
         End Try
 
     End Sub
 
     Private Function ValidarCampos() As Boolean
+
+        Dim bValidar As Boolean = False
 
         Try
             If String.IsNullOrWhiteSpace(txtNombre.Text) Then
@@ -59,36 +58,40 @@ Public Class Form1
                 txtNombre.Clear()
                 txtNombre.Focus()
 
-                Return False
-
             ElseIf cmbSexo.SelectedIndex = -1 Then
 
                 MessageBox.Show("Debes seleccionar una opción en el campo Sexo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
                 cmbSexo.Focus()
 
-                Return False
+            Else
+                bValidar = True
+
             End If
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox($"Error.ValidarCampos: {ex.Message}")
         End Try
 
-        Return True
+        Return bValidar
 
     End Function
 
     Public Function ValidarAnimalJson(nombre As String) As Boolean
 
         Dim webClient As New WebClient()
+
         Dim sJson As String
+
         Dim bAnimal As Boolean = False
+
+        Dim animales As Newtonsoft.Json.Linq.JArray
 
         Try
 
             sJson = webClient.DownloadString("https://www.desdelaweb.com.mx/god/animales.json")
+            animales = JsonConvert.DeserializeObject(sJson)
 
-            Dim animales As Newtonsoft.Json.Linq.JArray = JsonConvert.DeserializeObject(sJson)
             'MsgBox($"Total animales: {animales.Count}")
 
             For Each animal As JObject In animales
@@ -96,11 +99,21 @@ Public Class Form1
                 If animal.GetValue("nombre").ToString.ToUpper.Equals(nombre) Then
                     bAnimal = True
                     Exit For
+
+                Else
+                    MsgBox("No existe el Animal")
+                    txtNombre.Clear()
+                    txtNombre.Focus()
+
+                    cmbSexo.SelectedIndex = -1
+
+                    Exit For
+
                 End If
             Next
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox($"Error.ValidarAnimalJson: {ex.Message}")
         End Try
 
         Return bAnimal
