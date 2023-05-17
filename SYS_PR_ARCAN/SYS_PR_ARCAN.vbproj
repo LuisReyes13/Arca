@@ -77,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\SYS_CL_Animal.vb" />
+    <Compile Include="Clases\SYS_CL_Especie.vb" />
+    <Compile Include="Clases\SYS_CL_Servivo.vb" />
     <Compile Include="Formas\SYS_FO_AIngresar.vb">
       <SubType>Form</SubType>
     </Compile>

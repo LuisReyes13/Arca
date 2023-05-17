@@ -101,7 +101,7 @@ Public Class Form1
                     Exit For
 
                 Else
-                    MsgBox("No existe el Animal")
+                    MsgBox("No existe el Animal ingresado")
                     txtNombre.Clear()
                     txtNombre.Focus()
 
