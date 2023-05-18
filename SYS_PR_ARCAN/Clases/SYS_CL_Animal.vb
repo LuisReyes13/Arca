@@ -1,5 +1,5 @@
 ﻿Public Class SYS_CL_Animal
-    Inherits SYS_CL_Especie
+    Inherits SYS_CL_Especie ' Hereda de clase SYS_CL_Especie
     Public Property sNombre As String
     Public Property sSexo As String
 
