@@ -19,8 +19,8 @@ Public Class Form1
         Dim sNombre As String = Trim(txtNombre.Text.ToUpper)
         Dim sSexo As String = cmbSexo.SelectedItem
 
-        Dim existeNombreMacho As Boolean = listAnimales.Any(Function(a) a._Nombre = sNombre AndAlso a._Sexo = "MACHO")
-        Dim existeNombreHembra As Boolean = listAnimales.Any(Function(a) a._Nombre = sNombre AndAlso a._Sexo = "HEMBRA")
+        Dim existeNombreMacho As Boolean = listAnimales.Any(Function(a) a.sNombre = sNombre AndAlso a.sSexo = "MACHO")
+        Dim existeNombreHembra As Boolean = listAnimales.Any(Function(a) a.sNombre = sNombre AndAlso a.sSexo = "HEMBRA")
 
         Try
             If ValidarCampos() And ValidarAnimalJson(sNombre) Then
