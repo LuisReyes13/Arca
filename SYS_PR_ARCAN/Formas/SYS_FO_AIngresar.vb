@@ -93,23 +93,24 @@ Public Class Form1
 
             'MsgBox($"Total animales: {animales.Count}")
 
-            For Each animal As JObject In animales
+            For Each a As JObject In animales
                 'MsgBox(animal.GetValue("nombre").ToString.ToUpper())
-                If animal.GetValue("nombre").ToString.ToUpper.Equals(nombre) Then
+                If a.GetValue("nombre").ToString.ToUpper.Equals(nombre) Then
                     bAnimal = True
-                    Exit For
-
-                Else
-                    MsgBox("No existe el Animal ingresado")
-                    txtNombre.Clear()
-                    txtNombre.Focus()
-
-                    cmbSexo.SelectedIndex = -1
 
                     Exit For
 
                 End If
             Next
+
+            If Not bAnimal Then
+                MsgBox("No existe el Animal ingresado")
+                txtNombre.Clear()
+                txtNombre.Focus()
+
+                cmbSexo.SelectedIndex = -1
+
+            End If
 
         Catch ex As Exception
             MsgBox($"Error.ValidarAnimalJson: {ex.Message}")
