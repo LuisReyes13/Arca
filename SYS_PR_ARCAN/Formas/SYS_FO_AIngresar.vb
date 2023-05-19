@@ -19,14 +19,13 @@ Public Class Form1
         Dim sNombre As String = Trim(txtNombre.Text.ToUpper)
         Dim sSexo As String = cmbSexo.SelectedItem
 
-        Dim existeNombreMacho As Boolean = listAnimales.Any(Function(a) a.sNombre = sNombre AndAlso a.sSexo = "MACHO")
-        Dim existeNombreHembra As Boolean = listAnimales.Any(Function(a) a.sNombre = sNombre AndAlso a.sSexo = "HEMBRA")
+        Dim bExixteAnimal As Boolean = listAnimales.Any(Function(a) a.sNombre = sNombre AndAlso a.sSexo = sSexo)
 
         Try
             If ValidarCampos() And ValidarAnimalJson(sNombre) Then
-                If existeNombreMacho And Not existeNombreHembra Then
+                If bExixteAnimal Then
 
-                    MsgBox("Ya existen animales con el mismo nombre y ambos sexos.", MsgBoxStyle.Exclamation, "Error")
+                    MsgBox("Ya existe Animal de ese Sexo", MsgBoxStyle.Exclamation, "Error")
 
                 Else
 
