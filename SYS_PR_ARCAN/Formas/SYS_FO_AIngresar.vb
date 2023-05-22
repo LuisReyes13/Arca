@@ -22,7 +22,7 @@ Public Class Form1
         Dim bExixteAnimal As Boolean = listAnimales.Any(Function(a) a.Nombre = sNombre AndAlso a.Sexo = sSexo)
 
         Try
-            If ValidarCampos() And ValidarAnimalJson(sNombre) Then
+            If ValidarCampos() AndAlso ValidarAnimalJson(sNombre) Then
                 If bExixteAnimal Then
 
                     MsgBox("Ya existe Animal de ese Sexo", MsgBoxStyle.Exclamation, "Error")
