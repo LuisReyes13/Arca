@@ -19,7 +19,7 @@ Public Class Form1
         Dim sNombre As String = Trim(txtNombre.Text.ToUpper)
         Dim sSexo As String = cmbSexo.SelectedItem
 
-        Dim bExixteAnimal As Boolean = listAnimales.Any(Function(a) a.sNombre = sNombre AndAlso a.sSexo = sSexo)
+        Dim bExixteAnimal As Boolean = listAnimales.Any(Function(a) a.Nombre = sNombre AndAlso a.Sexo = sSexo)
 
         Try
             If ValidarCampos() And ValidarAnimalJson(sNombre) Then
@@ -91,10 +91,7 @@ Public Class Form1
             sJson = webClient.DownloadString("https://www.desdelaweb.com.mx/god/animales.json")
             animales = JsonConvert.DeserializeObject(sJson)
 
-            'MsgBox($"Total animales: {animales.Count}")
-
             For Each a As JObject In animales
-                'MsgBox(animal.GetValue("nombre").ToString.ToUpper())
                 If a.GetValue("nombre").ToString.ToUpper.Equals(nombre) Then
                     bAnimal = True
 
@@ -105,6 +102,7 @@ Public Class Form1
 
             If Not bAnimal Then
                 MsgBox("No existe el Animal ingresado")
+
                 txtNombre.Clear()
                 txtNombre.Focus()
 

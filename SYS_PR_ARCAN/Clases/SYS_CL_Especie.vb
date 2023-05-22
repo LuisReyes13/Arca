@@ -1,6 +1,23 @@
 ﻿Public Class SYS_CL_Especie
-    Public Property sReino As String
-    Public Property sEspecie As String
-    Public Property sMsgErr As String
+
+    Private sReino As String
+    Private sEspecie As String
+
+    Public Property Reino() As String
+        Get
+            Return sReino
+        End Get
+        Set(ByVal value As String)
+            sReino = value
+        End Set
+    End Property
+    Public Property Especie() As String
+        Get
+            Return sEspecie
+        End Get
+        Set(ByVal value As String)
+            sEspecie = value
+        End Set
+    End Property
 
 End Class

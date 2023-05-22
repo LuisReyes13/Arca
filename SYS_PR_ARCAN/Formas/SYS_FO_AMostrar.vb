@@ -11,13 +11,13 @@
             grdAnimales.Columns.Add("Sexo", "Sexo")
 
 
-            For Each c As SYS_CL_Animal In listAnimales.OrderBy(Function(x) x.sNombre)
-                If Not nombresMostrados.Contains(c.sNombre) Then
-                    grdAnimales.Rows.Add(c.sNombre, c.sSexo)
-                    nombresMostrados.Add(c.sNombre)
+            For Each c As SYS_CL_Animal In listAnimales.OrderBy(Function(x) x.Nombre)
+                If Not nombresMostrados.Contains(c.Nombre) Then
+                    grdAnimales.Rows.Add(c.Nombre, c.Sexo)
+                    nombresMostrados.Add(c.Nombre)
 
                 Else
-                    grdAnimales.Rows.Add("", c.sSexo)
+                    grdAnimales.Rows.Add("", c.Sexo)
 
                 End If
             Next
